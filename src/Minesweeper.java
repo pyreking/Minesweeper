@@ -10,7 +10,6 @@ public class Minesweeper extends JApplet implements MouseListener {
 	 * TODO: no duplicate numbers
 	 * TODO: time mechanism
 	 */
-	
 	Random random = new Random();
 	ImageIcon bomb = new ImageIcon("/home/austin/Desktop/Java/School/res/bomb.gif");
 	ImageIcon flag = new ImageIcon("/home/austin/Desktop/Java/School/res/flag.png");
@@ -21,7 +20,6 @@ public class Minesweeper extends JApplet implements MouseListener {
 	int numSquares = rows * columns;
 	int bombCount = 10;
 	int numCloseBombs;
-	int currentPos[][];
 	JPanel gridPanel = new JPanel();
 	JPanel informationPanel = new JPanel();
 	MinesweeperButton[][] gridButtons = new MinesweeperButton[rows][columns];
