@@ -1,9 +1,11 @@
+package com.tumblr.aguiney.minesweeper;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JTextField;
 import javax.swing.Timer;
 
 public class TimerField extends JTextField implements ActionListener {
+	private static final long serialVersionUID = -7394946304827245378L;
 	private int secondsElapsed;
 	private int minutesElapsed;
 	private int hoursElapsed;

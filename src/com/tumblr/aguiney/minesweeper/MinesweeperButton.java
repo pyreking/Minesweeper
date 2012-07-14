@@ -1,6 +1,8 @@
+package com.tumblr.aguiney.minesweeper;
 import javax.swing.*;
 
 public class MinesweeperButton extends JButton {
+	private static final long serialVersionUID = 1L;
 	// is the square a mine
 	private boolean isMine = false;
 	// is the square open or closed
@@ -32,15 +34,6 @@ public class MinesweeperButton extends JButton {
 		case 1: setEnabled(false); // closed square
 				if (value != 0) setText(String.valueOf(value));
 				if (value >= 0 && getIcon() != null) setIcon(null);
-		}
-	}
-	
-	// true if the square is open, false otherwise
-	public boolean isPressed() {
-		if (value == 1) {
-			return true;
-		} else {
-			return false;
 		}
 	}
 	

@@ -1,9 +1,11 @@
+package com.tumblr.aguiney.minesweeper.application;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class OptionsFrame extends JFrame implements ActionListener {
-	Minesweeper mine;
+public class OptionsFrameApplication extends JFrame implements ActionListener {
+	private static final long serialVersionUID = 4715603895581307778L;
+	MinesweeperApplication mine;
 	JButton ok = new JButton("OK");
 	JButton cancel = new JButton("Cancel");
 	JRadioButton beginner = new JRadioButton("Beginner (9x9 grid, 10 mines)", true);
@@ -16,7 +18,7 @@ public class OptionsFrame extends JFrame implements ActionListener {
 	 * one button is selected at a time. the layout manager is a grid layout composed of
 	 * 0 rows and one column. It takes a Minesweeper as an argument so that I can call its
 	 * changeBoardSize() method after the user selects a radio button. */
-	public OptionsFrame(Minesweeper mine) {
+	public OptionsFrameApplication(MinesweeperApplication mine) {
 		super("Options");
 		this.mine = mine;
 		JPanel panel = new JPanel();
@@ -46,7 +48,7 @@ public class OptionsFrame extends JFrame implements ActionListener {
 		 * Minesweeper class. The frame then becomes invisible */
 		if (e.getSource() == ok) {
 			setRadioButtonSwitch();
-			mine.setBoardSize();
+			mine.setBoardDifficulty();
 			setVisible(false);
 		}
 		
