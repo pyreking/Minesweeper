@@ -14,8 +14,8 @@ public class MinesweeperApplet extends JApplet implements ActionListener, MouseL
 	ImageIcon skull;
 	ImageIcon wrongFlag;
 	private int rows = 16;
-	private int columns = 30;
-	private int bombCount = 99;
+	private int columns = 16;
+	private int bombCount = 40;
 	private int numCloseBombs;
 	private int flagCount;
 	private boolean gameStarted = false;
@@ -32,10 +32,10 @@ public class MinesweeperApplet extends JApplet implements ActionListener, MouseL
 	JLabel bombsRemaingLabel;
 	JLabel timerLabel;
 	JTextField bombsRemaingField = new JTextField(4);
-	TimerField timerField = new TimerField(5);
+	TimerField timerField = new TimerField(6);
 	MinesweeperButton[][] gridButtons = new MinesweeperButton[rows][columns];
 	JButton restartButton = new JButton("Restart");
-	OptionsFrameApplet of = new OptionsFrameApplet(this);
+	OptionsFrameApplet ofa = new OptionsFrameApplet(this);
 	
 	public void init() {
 		setSize(1300, 630);
@@ -113,7 +113,7 @@ public class MinesweeperApplet extends JApplet implements ActionListener, MouseL
 	 /* changes the board difficulty level based on the radio button that 
 	 * is currently selected on options frame. */
 	public void setBoardDifficulty() {
-		if (of.choices[0]) {
+		if (ofa.choices[0]) {
 			setSize(425, 425);
 			gridPanel.removeAll();
 			setBoardAttributes(9, 9, 10, "Beginner");
@@ -121,18 +121,10 @@ public class MinesweeperApplet extends JApplet implements ActionListener, MouseL
 			setUpGame();
 		}
 		
-		if (of.choices[1]) {
+		if (ofa.choices[1]) {
 			setSize(720, 640);
 			gridPanel.removeAll();
-			setBoardAttributes(16, 16, 40, "Intermediate");
-			addButtons();
-			setUpGame();
-		}
-		
-		if (of.choices[2]) {
-			setSize(1300, 630);
-			gridPanel.removeAll();
-			setBoardAttributes(16, 30, 99, "Expert");
+			setBoardAttributes(16, 16, 40, "Advanced");
 			addButtons();
 			setUpGame();
 		}
@@ -211,7 +203,8 @@ public class MinesweeperApplet extends JApplet implements ActionListener, MouseL
 		}
 		
 		if (e.getSource() == options) {
-			of.setVisible(true);
+			ofa.setLocationRelativeTo(this);
+			ofa.setVisible(true);
 		}
 	}
 

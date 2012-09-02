@@ -13,13 +13,13 @@ public class MinesweeperApplication extends JFrame implements ActionListener, Mo
 	ImageIcon flag;
 	ImageIcon skull;
 	ImageIcon wrongFlag;
-	/* the game starts on expert by default, but immediately changes to beginner afterwards.
+	/* the game starts on advanced by default, but immediately changes to beginner afterwards.
 	 * this is the easiest way to provide multiple levels of difficulty because I can always
 	 * add/remove any number of buttons from the grid without worrying that the array might be
 	 * too small for one of the difficulties. */
 	private int rows = 16;
-	private int columns = 30;
-	private int bombCount = 99;
+	private int columns = 16;
+	private int bombCount = 40;
 	private int numCloseBombs;
 	private int flagCount;
 	private boolean gameStarted = false;
@@ -37,7 +37,7 @@ public class MinesweeperApplication extends JFrame implements ActionListener, Mo
 	JLabel bombsRemaingLabel;
 	JLabel timerLabel;
 	JTextField bombsRemaingField = new JTextField(4);
-	TimerField timerField = new TimerField(5);
+	TimerField timerField = new TimerField(6);
 	MinesweeperButton[][] gridButtons = new MinesweeperButton[rows][columns];
 	JButton restartButton = new JButton("Restart");
 	OptionsFrameApplication ofa = new OptionsFrameApplication(this);
@@ -83,6 +83,7 @@ public class MinesweeperApplication extends JFrame implements ActionListener, Mo
 		add(informationPanel, BorderLayout.NORTH);
 		add(gridPanel);
 		setBoardDifficulty();
+		setLocationRelativeTo(null);
 		setVisible(true);
 	}
 	
@@ -135,15 +136,7 @@ public class MinesweeperApplication extends JFrame implements ActionListener, Mo
 		if (ofa.choices[1]) {
 			setSize(720, 640);
 			gridPanel.removeAll();
-			setBoardAttributes(16, 16, 40, "Intermediate");
-			addButtons();
-			setUpGame();
-		}
-		
-		if (ofa.choices[2]) {
-			setSize(1300, 630);
-			gridPanel.removeAll();
-			setBoardAttributes(16, 30, 99, "Expert");
+			setBoardAttributes(16, 16, 40, "Advanced");
 			addButtons();
 			setUpGame();
 		}
@@ -222,6 +215,7 @@ public class MinesweeperApplication extends JFrame implements ActionListener, Mo
 		}
 		
 		if (e.getSource() == options) {
+			ofa.setLocationRelativeTo(this);
 			ofa.setVisible(true);
 		}
 		
